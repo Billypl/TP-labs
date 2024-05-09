@@ -1,0 +1,15 @@
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\bin\Debug\net8.0\Lab7.exe
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\bin\Debug\net8.0\Lab7.deps.json
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\bin\Debug\net8.0\Lab7.runtimeconfig.json
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\bin\Debug\net8.0\Lab7.dll
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\bin\Debug\net8.0\Lab7.pdb
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.AssemblyInfoInputs.cache
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.AssemblyInfo.cs
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.csproj.CoreCompileInputs.cache
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.sourcelink.json
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.dll
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\refint\Lab7.dll
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.pdb
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\Lab7.genruntimeconfig.cache
+C:\Users\kripe\Desktop\Uczelnia\sem 4\PT\PT Lab\Lab7\lab7\Lab7\obj\Debug\net8.0\ref\Lab7.dll
