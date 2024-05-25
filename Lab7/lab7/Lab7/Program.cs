@@ -15,7 +15,7 @@ class Program
         IWriter writer = new ConsoleWriter();
         FileSystemPrinter printer = new FileSystemPrinter(path, writer);
 
-        writer.Write("\n--------------------------- \nFiles reqursively: \n");
+        writer.Write("\n--------------------------- \nFiles reqursively: ");
         printer.PrintFilesRecursively();
 
         writer.Write("\n--------------------------- \nSorted files:");

@@ -14,6 +14,7 @@ namespace Lab7.Writers
             {
                 throw new ArgumentNullException();
             }
+
             if (first.Length == second.Length)
             {
                 return string.Compare(first, second);

@@ -11,9 +11,10 @@ namespace Lab7.Writers
     {
         public void Write(string text)
         {
-            if (!text.Contains('[') && !text.Contains('|'))
+            int linesCount = text.Select(c => c).Where(c => c == '|').ToList().Count;
+            if (!(text.Contains('[') && text.Contains(']') || linesCount != 0 && linesCount % 2 == 0))
             {
-                Console.Write(text);
+                Console.WriteLine(text);
                 return;
             }
 
@@ -21,7 +22,6 @@ namespace Lab7.Writers
             char endCharToCheck = text.Contains(']') ? ']' : '|';
             int beginIndex = text.IndexOf(beginCharToCheck);
             int endIndex = text.LastIndexOf(endCharToCheck);
-
 
             string part1 = text.Substring(0, beginIndex - 1);
             string part2 = text.Substring(beginIndex, endIndex - beginIndex + 1);

@@ -1,5 +1,6 @@
 ﻿using Lab7.Writers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -37,8 +38,20 @@ namespace Lab7
         public static SortedDictionary<string, int> GetFilesAsSortedDict(this DirectoryInfo directoryInfo)
         {
             SortedDictionary<string, int> elements = new SortedDictionary<string, int>(new StringLengthComparer());
-            directoryInfo.GetFiles().ToList().ForEach(fileInfo => elements.Add(fileInfo.Name, (int)fileInfo.Length));
-            directoryInfo.GetDirectories().ToList().ForEach(dirInfo => elements.Add(dirInfo.Name, (int)(dirInfo.GetDirectories().Length + directoryInfo.GetFiles().Length)));
+            directoryInfo
+                .GetFiles()
+                .ToList()
+                .ForEach(fileInfo => elements.Add(fileInfo.Name, (int)fileInfo.Length));
+            directoryInfo
+                .GetDirectories()
+                .ToList()
+                .ForEach(dirInfo => elements.Add(dirInfo.Name, (int)(dirInfo.GetElements().Length)));
+            return elements;
+        }
+
+        public static FileSystemInfo[] GetElements(this DirectoryInfo directoryInfo)
+        {
+            FileSystemInfo[] elements = [.. directoryInfo.GetFiles(), .. directoryInfo.GetDirectories()];
             return elements;
         }
 

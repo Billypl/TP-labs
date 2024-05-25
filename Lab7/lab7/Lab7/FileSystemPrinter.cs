@@ -1,12 +1,5 @@
 ﻿using Lab7.Writers;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text.Json;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab7
 {
@@ -46,11 +39,7 @@ namespace Lab7
             string dirIndentation = indentation + (isLastDir ? ELBOW_CHAR : JOIN_CHAR) + new string(HORIZONTAL_CHAR, JOINING_LINE_LENGTH);
             string fileIndentation = indentation + (isLastDir ? ' ' : VERTICAL_CHAR) + new string(' ', JOINING_LINE_LENGTH);
 
-            StringBuilder dirLine = new StringBuilder()
-                .Append(dirIndentation)
-                .Append($" [ {currDirInfo.Name} ] ")
-                .Append($"( {GetDirectoryElementsCount(currDirInfo)} ) ");
-            writer.Write(dirLine.ToString());
+            writer.Write(CreateParentDirectoryLine(currDirInfo, dirIndentation).ToString());
 
             FileInfo[] dirFiles = currDirInfo.GetFiles();
             for (int i = 0; i < dirFiles.Length; i++)
@@ -62,24 +51,39 @@ namespace Lab7
             for (int i = 0; i < dirDirs.Length; i++)
             {
                 DirectoryInfo dir = dirDirs[i];
-                if (isTheLastDirectory(i, currDirInfo))
-                {
-                    int indexOfLastIndent = fileIndentation.LastIndexOf(JOIN_CHAR + new string(HORIZONTAL_CHAR, JOINING_LINE_LENGTH));
-                    if (indexOfLastIndent != -1)
-                    {
-                        fileIndentation = fileIndentation.Substring(0, indexOfLastIndent);
-                        fileIndentation += new string(' ', JOINING_LINE_LENGTH + 1);
-                    }
-                }
+                fileIndentation = AlignIndentation(currDirInfo, fileIndentation, i);
                 PrintFilesRecursivelyWithDepth(dir.FullName, fileIndentation, i);
             }
+        }
+
+        private StringBuilder CreateParentDirectoryLine(DirectoryInfo currDirInfo, string dirIndentation)
+        {
+            return new StringBuilder()
+                .Append(dirIndentation)
+                .Append($" [ {currDirInfo.Name} ] ")
+                .Append($"( {currDirInfo.GetElements().Length} ) ");
+        }
+
+        private string AlignIndentation(DirectoryInfo currDirInfo, string fileIndentation, int i)
+        {
+            if (isTheLastDirectory(i, currDirInfo))
+            {
+                int indexOfLastIndent = fileIndentation.LastIndexOf(JOIN_CHAR + new string(HORIZONTAL_CHAR, JOINING_LINE_LENGTH));
+                if (indexOfLastIndent != -1)
+                {
+                    fileIndentation = fileIndentation.Substring(0, indexOfLastIndent);
+                    fileIndentation += new string(' ', JOINING_LINE_LENGTH + 1);
+                }
+            }
+
+            return fileIndentation;
         }
 
         private string CreateFileLine(FileInfo file, int fileIndex, DirectoryInfo currDirInfo, string fileIndentation)
         {
             StringBuilder newFileIndentation = new StringBuilder()
                    .Append(fileIndentation)
-                   .Append(GetJoiningChar(fileIndex, GetDirectoryElementsCount(currDirInfo)))
+                   .Append(GetJoiningChar(fileIndex, currDirInfo.GetElements().Length))
                    .Append(new string(HORIZONTAL_CHAR, JOINING_LINE_LENGTH));
             StringBuilder fileLine = new StringBuilder()
                 .Append(newFileIndentation)
@@ -94,11 +98,6 @@ namespace Lab7
         private char GetJoiningChar(int currentIndex, int totalLength)
         {
             return currentIndex == totalLength - 1 ? ELBOW_CHAR : JOIN_CHAR;
-        }
-
-        private int GetDirectoryElementsCount(DirectoryInfo dirInfo)
-        {
-            return dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length;    
         }
 
         private bool isTheLastDirectory(int index, DirectoryInfo dir)
